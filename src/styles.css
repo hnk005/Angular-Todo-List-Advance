@@ -17,3 +17,8 @@ body {
 a {
   text-decoration: none;
 }
+
+.routes {
+  cursor: pointer;
+  user-select: none;
+}

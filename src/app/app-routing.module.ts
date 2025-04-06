@@ -6,6 +6,7 @@ import { TaskTodayPageComponent } from './pages/task-today-page/task-today-page.
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { ForgotPasswordPageComponent } from './pages/forgot-password-page/forgot-password-page.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
       {
         path: 'register',
         component: RegisterPageComponent,
+      },
+      {
+        path: 'forgot-password',
+        component: ForgotPasswordPageComponent,
       },
       {
         path: '',
