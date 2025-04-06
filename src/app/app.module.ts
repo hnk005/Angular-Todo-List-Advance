@@ -19,6 +19,5 @@ import { AuthLayoutModule } from './layouts/auth-layout/auth-layout.module';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [],
 })
 export class AppModule {}

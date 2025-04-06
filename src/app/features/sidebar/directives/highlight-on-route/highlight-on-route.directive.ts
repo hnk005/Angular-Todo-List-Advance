@@ -23,7 +23,6 @@ export class HighlightOnRouteDirective implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // Lắng nghe sự kiện NavigationEnd để kiểm tra khi router thay đổi
     this.routerSubscription = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {

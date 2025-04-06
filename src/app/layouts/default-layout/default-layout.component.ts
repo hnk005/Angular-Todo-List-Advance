@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { filter, map } from 'rxjs';
   templateUrl: './default-layout.component.html',
 })
 export class DefaultLayoutComponent {
-  pageTitle: string = '';
+  readonly pageTitle: WritableSignal<string> = signal('');
 
   constructor(private router: Router, private route: ActivatedRoute) {
     this.router.events
@@ -23,7 +23,7 @@ export class DefaultLayoutComponent {
         })
       )
       .subscribe((title) => {
-        this.pageTitle = title;
+        this.pageTitle.set(title);
       });
   }
 }
