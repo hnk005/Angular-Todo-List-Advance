@@ -1,0 +1,51 @@
+<aside class="flex flex-col h-full bg-gray-200 p-2 rounded-sm">
+  <header class="px-2 py-1">
+    <div class="flex flex-col items-start">
+      <div class="flex items-center gap-2 py-2">
+        <img
+          class="cursor-pointer"
+          src="/logo.svg"
+          height="50"
+          width="50"
+          routerLink="/"
+          routerLinkActive="active"
+        />
+        <h1 class="text-2xl font-semibold">Angular</h1>
+      </div>
+      <div
+        class="w-full flex justify-between items-center text-primary text-xl font-semibold"
+      >
+        <h1>Menu</h1>
+        <ng-icon name="heroBars3" />
+      </div>
+    </div>
+  </header>
+  <div class="flex flex-col justify-between h-full">
+    <div>
+      <ul class="py-2 px-4">
+        <li class="text-sm font-bold">
+          <app-task-list />
+        </li>
+      </ul>
+    </div>
+
+    <footer class="p-2">
+      <ul>
+        <li
+          class="flex flex-row items-center gap-2 text-sm px-2 py-1 text-primary hover:bg-gray-300 rounded-sm cursor-pointer"
+          routerLink="/auth/login"
+        >
+          <ng-icon name="heroArrowRightEndOnRectangle" />
+          <p>Đăng nhập</p>
+        </li>
+        <li
+          class="flex flex-row items-center gap-2 text-sm px-2 py-1 text-primary hover:bg-gray-300 rounded-sm cursor-pointer"
+          routerLink="/auth/register"
+        >
+          <ng-icon name="heroUserPlus" />
+          <p>Đăng ký</p>
+        </li>
+      </ul>
+    </footer>
+  </div>
+</aside>
