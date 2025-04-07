@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/enviroments';
+import { ApiService } from 'src/app/core/services/api-service/api.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
+  readonly baseUrl = '/auth/login';
+  constructor(private apiService: ApiService) {}
 
-  constructor() { }
-
+  handleLogin(email: string, password: string) {
+    return this.apiService.post(this.baseUrl, { email, password });
+  }
 }
