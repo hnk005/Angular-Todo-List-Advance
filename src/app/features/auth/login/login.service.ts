@@ -9,6 +9,9 @@ export class LoginService {
   constructor(private apiService: ApiService) {}
 
   handleLogin(email: string, password: string) {
-    return this.apiService.post(this.baseUrl, { email, password });
+    return this.apiService.post(this.apiService.baseUrl + this.baseUrl, {
+      email,
+      password,
+    });
   }
 }
