@@ -8,6 +8,7 @@ import { LoginPageComponent } from './pages/auth-pages/login-page/login-page.com
 import { RegisterPageComponent } from './pages/auth-pages/register-page/register-page.component';
 import { ForgotPasswordPageComponent } from './pages/auth-pages/forgot-password-page/forgot-password-page.component';
 import { VerifyAccountPageComponent } from './pages/auth-pages/verify-account-page/verify-account-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
         pathMatch: 'full',
       },
     ],
+  },
+  {
+    path: '**',
+    component: NotFoundPageComponent,
   },
 ];
 
