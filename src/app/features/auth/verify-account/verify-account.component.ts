@@ -38,7 +38,8 @@ export class VerifyAccountComponent implements OnDestroy {
           this.idTimeOut.set(id);
         })
       )
-      .subscribe(() => {
+      .subscribe((data) => {
+        const {} = data.data;
         this.status.set(true);
       });
   }
