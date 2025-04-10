@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { VerifyAccountService } from './verify-account.service';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-verify-account',
@@ -9,23 +10,18 @@ import { VerifyAccountService } from './verify-account.service';
 })
 export class VerifyAccountComponent {
   status: boolean = false;
+  private destroy$ = new Subject<void>();
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private verifySevice: VerifyAccountService
-  ) {
+  constructor(private route: ActivatedRoute, private authService: AuthService) {
+    const emailVerify = this.route.snapshot.paramMap.get('email');
     const verifyToken = this.route.snapshot.paramMap.get('token');
-    if (verifyToken) {
-      this.status = this.verifySevice.handleVerifyAccount(verifyToken);
-
-      setTimeout(() => {
-        if (this.status) {
-          this.router.navigate(['/auth/login']);
-          return;
-        }
-        this.router.navigate(['/']);
-      }, 2000);
+    if (verifyToken && emailVerify) {
+      this.authService
+        .handleVerifyAccount(emailVerify, verifyToken)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((data) => {
+          console.log(data);
+        });
     }
   }
 }

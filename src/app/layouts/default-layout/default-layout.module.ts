@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { DefaultLayoutComponent } from './default-layout.component';
 import { SidebarModule } from 'src/app/features/navigation/sidebar/sidebar.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [DefaultLayoutComponent],
-  imports: [
-    RouterModule,
-    SidebarModule,
-  ],
+  imports: [SidebarModule, SharedModule],
 })
 export class DefaultLayoutModule {}

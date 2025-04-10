@@ -21,6 +21,7 @@
     "@ng-icons/core": "^31.2.0",
     "@ng-icons/heroicons": "^31.2.0",
     "@tailwindcss/postcss": "^4.1.3",
+    "ngx-spinner": "^19.0.0",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
