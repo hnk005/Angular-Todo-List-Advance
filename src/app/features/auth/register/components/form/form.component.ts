@@ -1,16 +1,12 @@
 import {
   Component,
-  OnChanges,
-  OnInit,
   signal,
-  WritableSignal,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../../../auth.service';
 import { ValidationMessages } from 'src/app/constants/validation-messages';
 import {
-  ForbiddenTextDirective,
   forbiddenTextValidator,
 } from 'src/app/shared/directives/forbidden-text/forbidden-text.directive';
 import { RegexPatterns } from 'src/app/constants/regex-patterns';
