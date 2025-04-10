@@ -5,10 +5,16 @@ import { ApiService } from 'src/app/core/services/api-service/api.service';
   providedIn: 'root',
 })
 export class AuthService {
-  readonly loginUrl = '/auth/login';
-  readonly registerUrl = '/auth/register';
-  readonly verifyAccountUrl = '/auth/verify-account';
-  constructor(private apiService: ApiService) {}
+  protected readonly loginUrl = '/auth/login';
+  protected readonly registerUrl = '/auth/register';
+  protected readonly verifyAccountUrl = '/auth/verify-account';
+  protected readonly forgotPassword = '/auth/forgot-password';
+
+  constructor(protected readonly apiService: ApiService) {}
+
+  getUrlLogin() {
+    return this.loginUrl;
+  }
 
   handleRegister(fullName: string, email: string, password: string) {
     const apiUrl = this.apiService.baseUrl + this.registerUrl;
@@ -25,6 +31,11 @@ export class AuthService {
       email,
       password,
     });
+  }
+
+  handleForgotPassword(email: string) {
+    const apiUrl = this.apiService.baseUrl + this.forgotPassword;
+    return this.apiService.post(apiUrl, { email });
   }
 
   handleVerifyAccount(email: string, token: string) {
