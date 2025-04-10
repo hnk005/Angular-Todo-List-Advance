@@ -1,36 +1,42 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from 'src/app/core/services/api-service/api.service';
+import { TokenService } from 'src/app/core/services/token-service/token.service';
+import {
+  LoginRequest,
+  LoginResponse,
+  RegisterRequest,
+} from 'src/app/models/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  protected readonly loginUrl = '/auth/login';
-  protected readonly registerUrl = '/auth/register';
-  protected readonly verifyAccountUrl = '/auth/verify-account';
-  protected readonly forgotPassword = '/auth/forgot-password';
+  protected readonly loginUrl = '/login';
+  protected readonly registerUrl = '/register';
+  protected readonly verifyAccountUrl = '/verify-account';
+  protected readonly forgotPassword = '/forgot-password';
 
-  constructor(protected readonly apiService: ApiService) {}
+  constructor(
+    protected readonly apiService: ApiService,
+    protected readonly tokenService: TokenService
+  ) {}
 
-  getUrlLogin() {
+  getUrlLogin(): string {
     return this.loginUrl;
   }
 
-  handleRegister(fullName: string, email: string, password: string) {
-    const apiUrl = this.apiService.baseUrl + this.registerUrl;
-    return this.apiService.post(apiUrl, {
-      fullName,
-      email,
-      password,
-    });
+  isLogin(): boolean {
+    return this.tokenService.getToken() ? true : false;
   }
 
-  handleLogin(email: string, password: string) {
+  handleRegister(data: RegisterRequest) {
+    const apiUrl = this.apiService.baseUrl + this.registerUrl;
+    return this.apiService.post(apiUrl, data);
+  }
+
+  handleLogin(data: LoginRequest) {
     const apiUrl = this.apiService.baseUrl + this.loginUrl;
-    return this.apiService.post(apiUrl, {
-      email,
-      password,
-    });
+    return this.apiService.post<LoginResponse>(apiUrl, data);
   }
 
   handleForgotPassword(email: string) {
@@ -42,6 +48,4 @@ export class AuthService {
     const apiUrl = this.apiService.baseUrl + this.verifyAccountUrl;
     return this.apiService.put(apiUrl, { token });
   }
-
-  
 }

@@ -7,10 +7,12 @@ import {
   WritableSignal,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { catchError, Subject, takeUntil, throwError } from 'rxjs';
+import { catchError, map, Subject, takeUntil, throwError } from 'rxjs';
 import { AuthService } from '../../../auth.service';
 import { ValidationMessages } from 'src/app/constants/validation-messages';
 import { FormLimits } from 'src/app/constants/form-limits';
+import { TokenService } from 'src/app/core/services/token-service/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-login',
@@ -25,7 +27,11 @@ export class FormComponent implements OnDestroy {
   protected readonly destroy$;
 
   @ViewChild('passwordInput') passwordInputRef!: ElementRef;
-  constructor(protected readonly authSerivce: AuthService) {
+  constructor(
+    protected readonly authSerivce: AuthService,
+    protected readonly tokenService: TokenService,
+    protected readonly router: Router
+  ) {
     this.validationMessages = ValidationMessages;
     this.formLimits = FormLimits;
     this.formLogin = new FormGroup({
@@ -56,7 +62,7 @@ export class FormComponent implements OnDestroy {
     }
 
     this.authSerivce
-      .handleLogin(email.trim(), password.trim())
+      .handleLogin({ username: email.trim(), password: password.trim() })
       .pipe(
         takeUntil(this.destroy$),
         catchError((error) => {
@@ -66,7 +72,9 @@ export class FormComponent implements OnDestroy {
         })
       )
       .subscribe((data) => {
-        console.log(data);
+        const { id } = data.data;
+        this.tokenService.saveToken(id.toString());
+        this.router.navigate(['/']);
       });
   }
 

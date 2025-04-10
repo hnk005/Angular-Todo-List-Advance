@@ -12,6 +12,7 @@ import { HighlightOnRouteDirective } from './directives/highlight-on-route/highl
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { UserModule } from 'src/app/features/user/user.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   imports: [
     SharedModule,
+    UserModule,
     NgIconsModule.withIcons({
       heroBars3,
       heroListBullet,

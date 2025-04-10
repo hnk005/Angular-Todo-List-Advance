@@ -1,16 +1,12 @@
-import {
-  Component,
-  signal,
-} from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../../../auth.service';
 import { ValidationMessages } from 'src/app/constants/validation-messages';
-import {
-  forbiddenTextValidator,
-} from 'src/app/shared/directives/forbidden-text/forbidden-text.directive';
+import { forbiddenTextValidator } from 'src/app/shared/directives/forbidden-text/forbidden-text.directive';
 import { RegexPatterns } from 'src/app/constants/regex-patterns';
 import { FormLimits } from 'src/app/constants/form-limits';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-register',
@@ -26,7 +22,10 @@ export class FormComponent {
   protected readonly showConfirmPassword;
   protected readonly destroy$;
 
-  constructor(protected readonly authSevice: AuthService) {
+  constructor(
+    protected readonly authSevice: AuthService,
+    protected readonly router: Router
+  ) {
     this.validationMessages = ValidationMessages;
     this.regexPatterns = RegexPatterns;
     this.formLimits = FormLimits;
@@ -78,10 +77,14 @@ export class FormComponent {
     }
 
     this.authSevice
-      .handleRegister(fullName, email, password)
+      .handleRegister({
+        fullName: fullName.trim(),
+        email: email.trim(),
+        password: password.trim(),
+      })
       .pipe(takeUntil(this.destroy$))
-      .subscribe((data) => {
-        console.log(data);
+      .subscribe(() => {
+        this.router.navigate(['/auth/login']);
       });
   }
 

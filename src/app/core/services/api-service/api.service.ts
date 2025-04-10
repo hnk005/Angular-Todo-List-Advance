@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { T } from 'node_modules/@angular/common/common_module.d-Qx8B6pmN';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environment/enviroments';
 
@@ -11,23 +12,23 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  public get(url: string): Observable<any> {
-    return this.http.get(url);
+  public get<T>(url: string): Observable<T> {
+    return this.http.get<T>(url);
   }
 
-  public getWithHeader(url: string, header: HttpHeaders): Observable<any> {
-    return this.http.get(url, { headers: header });
+  public getWithHeader<T>(url: string, header: HttpHeaders): Observable<T> {
+    return this.http.get<T>(url, { headers: header });
   }
 
-  public post(url: string, body: any): Observable<any> {
-    return this.http.post(url, body);
+  public post<T>(url: string, body: any): Observable<T> {
+    return this.http.post<T>(url, body);
   }
 
-  public put(url: string, body: any): Observable<any> {
-    return this.http.put(url, body);
+  public put<T>(url: string, body: any): Observable<T> {
+    return this.http.put<T>(url, body);
   }
 
-  public delete(url: string): Observable<any> {
-    return this.http.delete(url);
+  public delete<T>(url: string): Observable<T> {
+    return this.http.delete<T>(url);
   }
 }

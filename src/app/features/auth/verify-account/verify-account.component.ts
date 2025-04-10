@@ -39,7 +39,6 @@ export class VerifyAccountComponent implements OnDestroy {
         })
       )
       .subscribe((data) => {
-        const {} = data.data;
         this.status.set(true);
       });
   }
