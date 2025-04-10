@@ -18,14 +18,14 @@ import { FormLimits } from 'src/app/constants/form-limits';
   templateUrl: './form.component.html',
 })
 export class FormComponent implements OnDestroy {
-  protected validationMessages;
-  protected formLimits;
-  protected formLogin;
-  readonly showPassword;
-  private destroy$;
+  protected readonly validationMessages;
+  protected readonly formLimits;
+  protected readonly formLogin;
+  protected readonly showPassword;
+  protected readonly destroy$;
 
   @ViewChild('passwordInput') passwordInputRef!: ElementRef;
-  constructor(private authSerivce: AuthService) {
+  constructor(protected readonly authSerivce: AuthService) {
     this.validationMessages = ValidationMessages;
     this.formLimits = FormLimits;
     this.formLogin = new FormGroup({

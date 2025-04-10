@@ -22,15 +22,15 @@ import { FormLimits } from 'src/app/constants/form-limits';
   templateUrl: './form.component.html',
 })
 export class FormComponent {
-  protected validationMessages;
-  protected regexPatterns;
-  protected formLimits;
-  protected formRegister;
-  readonly showPassword;
-  readonly showConfirmPassword;
-  private destroy$;
+  protected readonly validationMessages;
+  protected readonly regexPatterns;
+  protected readonly formLimits;
+  protected readonly formRegister;
+  protected readonly showPassword;
+  protected readonly showConfirmPassword;
+  protected readonly destroy$;
 
-  constructor(private authSevice: AuthService) {
+  constructor(protected readonly authSevice: AuthService) {
     this.validationMessages = ValidationMessages;
     this.regexPatterns = RegexPatterns;
     this.formLimits = FormLimits;
