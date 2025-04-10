@@ -38,8 +38,8 @@ export class AuthService {
     return this.apiService.post(apiUrl, { email });
   }
 
-  handleVerifyAccount(email: string, token: string) {
+  handleVerifyAccount(token: string) {
     const apiUrl = this.apiService.baseUrl + this.verifyAccountUrl;
-    return this.apiService.put(apiUrl, { email, token });
+    return this.apiService.put(apiUrl, { token });
   }
 }
