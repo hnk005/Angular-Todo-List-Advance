@@ -21,6 +21,6 @@ import { LoadingInterceptor } from './interceptors/loading/loading.interceptor';
       multi: true,
     },
   ],
-  exports: [],
+  exports: [HttpClientModule],
 })
 export class CoreModule {}

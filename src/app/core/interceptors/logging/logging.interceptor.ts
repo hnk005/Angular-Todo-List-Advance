@@ -28,7 +28,10 @@ export class LoggingInterceptor implements HttpInterceptor {
       }),
       catchError((error: HttpErrorResponse) => {
         this.toastr.error(
-          error.error.message ?? error.message ?? 'No messages'
+          error.error.message ??
+            error.statusText ??
+            error.message ??
+            'No messages'
         );
         return throwError(() => error);
       })

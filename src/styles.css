@@ -22,3 +22,18 @@ a {
   cursor: pointer;
   user-select: none;
 }
+
+button:disabled {
+  opacity: 70%;
+}
+
+.alert {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  font-size: small;
+}
+
+.alert-danger {
+  color: red;
+}
