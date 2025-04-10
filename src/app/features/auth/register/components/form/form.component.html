@@ -23,33 +23,34 @@
           class="block w-full border-2 border-grey-300 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6"
         />
       </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)"
+      >
+        <div
+          *ngIf="fullName?.hasError('required')"
+          class="flex items-center gap-1 py-1"
+        >
+          <ng-icon name="heroExclamationCircle" size="22" />
+          {{ validationMessages.required("Full name") }}
+        </div>
+        <div
+          *ngIf="fullName?.hasError('minlength')"
+          class="flex items-center gap-1 py-1"
+        >
+          <ng-icon name="heroExclamationCircle" size="22" />
+          Full Name be at least 4 characters long
+        </div>
+        <div
+          *ngIf="fullName?.hasError('forbiddenText')"
+          class="flex items-center gap-1 py-1"
+        >
+          <ng-icon name="heroExclamationCircle" size="22" />
+          {{ validationMessages.invalid("Full Name") }}
+        </div>
+      </div>
     </div>
-    <div
-      class="alert alert-danger"
-      *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)"
-    >
-      <div
-        *ngIf="fullName?.hasError('required')"
-        class="flex items-center gap-1 py-1"
-      >
-        <ng-icon name="heroExclamationCircle" size="22" />
-        {{ validationMessages.required("Full name") }}
-      </div>
-      <div
-        *ngIf="fullName?.hasError('minlength')"
-        class="flex items-center gap-1 py-1"
-      >
-        <ng-icon name="heroExclamationCircle" size="22" />
-        Full Name be at least 4 characters long
-      </div>
-      <div
-        *ngIf="fullName?.hasError('forbiddenText')"
-        class="flex items-center gap-1 py-1"
-      >
-        <ng-icon name="heroExclamationCircle" size="22" />
-        {{ validationMessages.invalid("Full Name") }}
-      </div>
-    </div>
+
     <div>
       <label for="email" class="block text-sm/6 font-medium text-gray-900"
         >Email address
