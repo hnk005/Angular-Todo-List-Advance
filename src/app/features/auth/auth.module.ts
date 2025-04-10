@@ -18,6 +18,7 @@ import { FormComponent as FormRegisterComponent } from './register/components/fo
 import { TitleComponent as TitleRegisterComponent } from './register/components/title/title.component';
 import { FormComponent as FormForgotComponent } from './forgot-password/components/form/form.component';
 import { TitleComponent as TitleForgotComponent } from './forgot-password/components/title/title.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TitleComponent as TitleForgotComponent } from './forgot-password/compon
     ForgotPasswordComponent,
     FormForgotComponent,
     TitleForgotComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     NgIconsModule.withIcons({
