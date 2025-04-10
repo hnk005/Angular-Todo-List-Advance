@@ -42,4 +42,6 @@ export class AuthService {
     const apiUrl = this.apiService.baseUrl + this.verifyAccountUrl;
     return this.apiService.put(apiUrl, { token });
   }
+
+  
 }
