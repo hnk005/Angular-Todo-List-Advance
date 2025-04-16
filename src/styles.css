@@ -1,2 +1,24 @@
 @import "tailwindcss";
-@import "ngx-toastr/toastr";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.routes {
+  cursor: pointer;
+  user-select: none;
+}
+
+button:disabled {
+  opacity: 70%;
+}
