@@ -1,37 +1,70 @@
 <aside
-  class="w-64 bg-gray-100 p-4 h-full rounded-xl shadow-xl flex flex-col gap-6"
+  class="w-[380px] bg-gray-100 p-4 h-full rounded-xl shadow-xl flex flex-col gap-6"
 >
-  <div class="font-bold text-primary">Menu</div>
+  <div
+    class="flex justify-between items-center font-bold text-2xl text-primary"
+  >
+    <div class="flex items-center gap-2 py-2 routes" routerLink="/">
+      <img
+        class="cursor-pointer"
+        src="/images/logo.svg"
+        height="50"
+        width="50"
+      />
+      <h1 class="text-2xl font-semibold">Angular</h1>
+    </div>
+    <ng-icon name="heroBars3" size="30" />
+  </div>
 
   <!-- Search -->
-  <!-- <div>
+  <div
+    class="flex flex-row items-center rounded-xl p-2 gap-2 border-gray-200 shadow-sm"
+  >
+    <ng-icon name="heroMagnifyingGlass" size="20" />
     <input
       type="text"
       placeholder="Search"
-      class="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none"
+      class="w-full p-1 text-secondary focus:outline-none"
     />
-  </div> -->
+  </div>
 
   <!-- Tasks -->
-  <!-- <div>
-    <p class="text-xs font-semibold text-gray-500 mb-2">TASKS</p>
+  <div class="mt-6">
+    <p class="text-sm font-semibold text-gray-500 mb-2">TASKS</p>
     <ul class="space-y-2">
       <li
-        class="flex justify-between items-center text-sm hover:bg-gray-100 p-2 rounded-md"
+        class="flex justify-between items-center text-sm hover:bg-gray-300 p-2 rounded-md routes"
       >
-        <span>➤ Upcoming</span>
-        <span class="text-xs bg-gray-200 px-2 rounded-full">12</span>
+        <span class="flex flex-row items-center gap-2">
+          <ng-icon name="heroChevronDoubleRight" size="20" />
+          Upcoming
+        </span>
+        <span class="text-xs bg-gray-200 px-2 rounded-sm">12</span>
       </li>
       <li
-        class="flex justify-between items-center text-sm bg-gray-100 p-2 rounded-md font-medium"
+        routerLink="/task-today"
+        class="flex justify-between items-center text-sm bg-gray-300 p-2 rounded-md font-medium routes"
       >
-        <span>📋 Today</span>
-        <span class="text-xs bg-gray-200 px-2 rounded-full">5</span>
+        <span class="flex flex-row items-center gap-2">
+          <ng-icon name="heroListBullet" size="20" />
+          Today
+        </span>
+        <span class="text-xs bg-gray-200 px-2 rounded-sm">5</span>
       </li>
-      <li class="text-sm p-2 rounded-md hover:bg-gray-100">📅 Calendar</li>
-      <li class="text-sm p-2 rounded-md hover:bg-gray-100">🧱 Sticky Wall</li>
+      <li class="text-sm p-2 rounded-md hover:bg-gray-300 routes">
+        <span class="flex flex-row items-center gap-2">
+          <ng-icon name="heroCalendarDays" size="20" />
+          Calendar
+        </span>
+      </li>
+      <li class="text-sm p-2 rounded-md hover:bg-gray-300 routes">
+        <span class="flex flex-row items-center gap-2">
+          <ng-icon name="heroDocument" size="20" class="rotate-180" />
+          Sticky Wall
+        </span>
+      </li>
     </ul>
-  </div> -->
+  </div>
 
   <!-- Lists -->
   <!-- <div>
@@ -79,12 +112,21 @@
   </div> -->
 
   <!-- Bottom -->
-  <!-- <div class="mt-auto space-y-2 text-sm">
-    <div class="flex items-center gap-2 cursor-pointer hover:text-blue-500">
-      ⚙ Settings
+  <div class="mt-auto space-y-2">
+    <!-- <div class="flex items-center gap-2 cursor-pointer hover:text-blue-500">
+      Settings
+    </div> -->
+    <div
+      class="flex items-center gap-2 hover:bg-red-500 hover:text-gray-100 p-2 rounded-md routes"
+    >
+      <span class="flex flex-row items-center gap-2">
+        <ng-icon
+          name="heroArrowLeftEndOnRectangle"
+          size="20"
+          class="rotate-180"
+        />
+        Sign out
+      </span>
     </div>
-    <div class="flex items-center gap-2 cursor-pointer hover:text-red-500">
-      🚪 Sign out
-    </div>
-  </div> -->
+  </div>
 </aside>
