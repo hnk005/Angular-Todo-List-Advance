@@ -22,7 +22,7 @@ export class LoggingInterceptor implements HttpInterceptor {
       tap((event) => {
         if (event instanceof HttpResponse) {
           this.loggerService.success(
-            event.body?.message ?? event.statusText ?? 'No message'
+            event?.body?.message ?? event?.statusText ?? 'No message'
           );
         }
       }),
