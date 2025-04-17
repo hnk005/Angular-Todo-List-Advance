@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './node_modules/@material-tailwind/html/**/*.js',
-    './src/**/*.{html,ts}',
-  ],
+  content: ['./src/**/*.{html,ts}'],
   theme: {
     extend: {
       colors: {
@@ -13,5 +10,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@material-tailwind/html/utils/withMT')],
+  plugins: [],
 };
