@@ -22,7 +22,6 @@
     "@ng-icons/core": "^31.3.0",
     "@ng-icons/heroicons": "^31.3.0",
     "@tailwindcss/postcss": "^4.1.4",
-    "daisyui": "^5.0.23",
     "ngx-spinner": "^19.0.0",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
