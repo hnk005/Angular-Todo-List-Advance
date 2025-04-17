@@ -1,1 +1,14 @@
-<p>main-layout works!</p>
+<div class="flex h-full w-full">
+  <div class="flex flex-row justify-between p-2 w-full">
+    <!-- Sidebar Left -->
+    <app-sidebar-left />
+
+    <!-- Main content -->
+    <main class="flex p-4 w-full">
+      <router-outlet />
+    </main>
+
+    <!-- Sidebar Right -->
+    <!-- <app-sidebar-right /> -->
+  </div>
+</div>
