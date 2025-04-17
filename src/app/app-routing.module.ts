@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
 import { TaskTodayComponent } from './modules/todo/pages/task-today/task-today.component';
 import { MainLayoutModule } from './core/layouts/main-layout/main-layout.module';
+import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
+import { AuthLayoutModule } from './core/layouts/auth-layout/auth-layout.module';
 
 const routes: Routes = [
   {
@@ -16,10 +18,14 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'auth',
+    component: AuthLayoutComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), MainLayoutModule],
+  imports: [RouterModule.forRoot(routes), MainLayoutModule, AuthLayoutModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
