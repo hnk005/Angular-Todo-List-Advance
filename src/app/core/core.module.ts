@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoadingInterceptor } from './interceptors/loading-interceptor/loading.interceptor';
 import { ApiService } from './services/api-service/api.service';
+import { LoggingInterceptor } from './interceptors/logging-interceptor/logging.interceptor';
 
 @NgModule({
   declarations: [],
@@ -12,6 +12,11 @@ import { ApiService } from './services/api-service/api.service';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoggingInterceptor,
       multi: true,
     },
   ],
