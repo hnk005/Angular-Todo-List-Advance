@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { environment } from '../../../configs/enviroment';
 
 @Injectable({
@@ -14,34 +13,21 @@ export class ApiService {
 
   // GET request
   get<T>(endpoint: string): Observable<T> {
-    return this.http
-      .get<T>(`${this.baseUrl}/${endpoint}`)
-      .pipe(catchError(this.handleError));
+    return this.http.get<T>(`${this.baseUrl}/${endpoint}`);
   }
 
   // POST request
   post<T>(endpoint: string, data: any): Observable<T> {
-    return this.http
-      .post<T>(`${this.baseUrl}/${endpoint}`, data)
-      .pipe(catchError(this.handleError));
+    return this.http.post<T>(`${this.baseUrl}/${endpoint}`, data);
   }
 
   // PUT request
   put<T>(endpoint: string, data: any): Observable<T> {
-    return this.http
-      .put<T>(`${this.baseUrl}/${endpoint}`, data)
-      .pipe(catchError(this.handleError));
+    return this.http.put<T>(`${this.baseUrl}/${endpoint}`, data);
   }
 
   // DELETE request
   delete<T>(endpoint: string): Observable<T> {
-    return this.http
-      .delete<T>(`${this.baseUrl}/${endpoint}`)
-      .pipe(catchError(this.handleError));
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    // Handle error here
-    return throwError(() => error);
+    return this.http.delete<T>(`${this.baseUrl}/${endpoint}`);
   }
 }
