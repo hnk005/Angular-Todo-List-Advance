@@ -5,6 +5,7 @@ import { TaskTodayComponent } from './modules/todo/pages/task-today/task-today.c
 import { MainLayoutModule } from './core/layouts/main-layout/main-layout.module';
 import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
 import { AuthLayoutModule } from './core/layouts/auth-layout/auth-layout.module';
+import { LoginPageComponent } from './modules/auth/pages/login-page/login-page.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,13 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthLayoutComponent,
+    children: [
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      {
+        path: 'login',
+        component: LoginPageComponent,
+      },
+    ],
   },
 ];
 
