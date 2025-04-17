@@ -1,9 +1,11 @@
 @import "tailwindcss";
+@plugin "daisyui";
+@config "../tailwind.config.js";
+
 @import "@fontsource/roboto/300.css";
 @import "@fontsource/roboto/400.css";
 @import "@fontsource/roboto/500.css";
 @import "@fontsource/roboto/700.css";
-@config "../tailwind.config.js";
 
 * {
   box-sizing: border-box;
