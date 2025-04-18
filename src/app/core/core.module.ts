@@ -4,6 +4,7 @@ import { LoadingInterceptor } from './interceptors/loading-interceptor/loading.i
 import { ApiService } from './services/api-service/api.service';
 import { LoggingInterceptor } from './interceptors/logging-interceptor/logging.interceptor';
 import { TokenService } from './services/token-service/token.service';
+import { AuthInterceptor } from './interceptors/auth-interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [],
@@ -19,6 +20,11 @@ import { TokenService } from './services/token-service/token.service';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoggingInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true,
     },
   ],
