@@ -11,9 +11,14 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthLogoComponent } from './components/auth-logo/auth-logo.component';
+import { AuthRegisterFormComponent } from './components/auth-register-form/auth-register-form.component';
 
 @NgModule({
-  declarations: [AuthLoginFormComponent, AuthLogoComponent],
+  declarations: [
+    AuthLoginFormComponent,
+    AuthLogoComponent,
+    AuthRegisterFormComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
