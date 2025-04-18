@@ -30,8 +30,17 @@ a {
   user-select: none;
 }
 
+.alert {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  font-size: medium;
+}
+
+.alert-danger {
+  color: red;
+}
+
 button:disabled {
   opacity: 70%;
 }
-
-
