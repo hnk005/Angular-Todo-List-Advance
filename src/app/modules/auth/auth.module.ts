@@ -11,12 +11,19 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthLogoComponent } from './components/auth-logo/auth-logo.component';
+import { AuthRegisterFormComponent } from './components/auth-register-form/auth-register-form.component';
+import { RouterLink } from '@angular/router';
 
 @NgModule({
-  declarations: [AuthLoginFormComponent, AuthLogoComponent],
+  declarations: [
+    AuthLoginFormComponent,
+    AuthLogoComponent,
+    AuthRegisterFormComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    RouterLink,
     NgIconsModule.withIcons({
       heroEye,
       heroEyeSlash,
@@ -25,6 +32,10 @@ import { AuthLogoComponent } from './components/auth-logo/auth-logo.component';
     }),
   ],
   providers: [AuthService],
-  exports: [AuthLoginFormComponent, AuthLogoComponent],
+  exports: [
+    AuthLoginFormComponent,
+    AuthLogoComponent,
+    AuthRegisterFormComponent,
+  ],
 })
 export class AuthModule {}
