@@ -22,13 +22,10 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthLayoutComponent,
-    children: [
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
-      {
-        path: 'login',
-        component: LoginPageComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./modules/auth/auth-routing.module').then(
+        (m) => m.AuthRoutingModule
+      ),
   },
 ];
 
