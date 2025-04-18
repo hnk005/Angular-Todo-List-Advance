@@ -1,1 +1,206 @@
-<p>auth-register-form works!</p>
+<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+  @let fullName = formRegister.get('fullName'); @let email =
+  formRegister.get('email'); @let password = formRegister.get('password'); @let
+  confirmPassword = formRegister.get('confirmPassword');
+  <h2
+    class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900"
+  >
+    Login account
+  </h2>
+  <form
+    [formGroup]="formRegister"
+    class="space-y-6"
+    (ngSubmit)="handleSubmit()"
+    method="POST"
+  >
+    <div>
+      <label for="email" class="block text-sm/6 font-medium text-gray-900"
+        >Full name</label
+      >
+      <div class="mt-2">
+        <input
+          type="text"
+          name="fullName"
+          id="fullName"
+          autocomplete="fullName"
+          formControlName="fullName"
+          [maxLength]="validation.fullName.limit.max"
+          class="block w-full border-2 border-grey-300 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6"
+        />
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)"
+      >
+        <div
+          *ngIf="fullName?.hasError('required')"
+          class="flex items-center gap-1 py-1"
+        >
+          <ng-icon name="heroExclamationCircle" size="22" />
+          {{ validationMessages.required("Full name") }}
+        </div>
+        <div
+          *ngIf="fullName?.hasError('minlength')"
+          class="flex items-center gap-1 py-1"
+        >
+          <ng-icon name="heroExclamationCircle" size="22" />
+          Full Name be at least 4 characters long
+        </div>
+        <div
+          *ngIf="fullName?.hasError('forbiddenText')"
+          class="flex items-center gap-1 py-1"
+        >
+          <ng-icon name="heroExclamationCircle" size="22" />
+          {{ validationMessages.invalid("Full Name") }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="email" class="block text-sm/6 font-medium text-gray-900"
+        >Email address
+      </label>
+      <div class="mt-2">
+        <input
+          type="email"
+          name="email"
+          id="email"
+          autocomplete="email"
+          formControlName="email"
+          [maxlength]="validation.email.limit.max"
+          class="block w-full border-2 border-grey-300 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6"
+        />
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+      >
+        <div
+          *ngIf="email?.hasError('required')"
+          class="flex items-center gap-1 py-1"
+        >
+          <ng-icon name="heroExclamationCircle" size="22" />
+          {{ validationMessages.required("Email address") }}
+        </div>
+        <div
+          *ngIf="email?.hasError('email')"
+          class="flex items-center gap-1 py-1"
+        >
+          <ng-icon name="heroExclamationCircle" size="22" />
+          {{ validationMessages.invalid("Email address") }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="flex items-center justify-between">
+        <label for="password" class="block text-sm/6 font-medium text-gray-900"
+          >Password</label
+        >
+      </div>
+      <div class="relative mt-2">
+        <input
+          [type]="showPassword() ? 'text' : 'password'"
+          name="password"
+          id="password"
+          autocomplete="current-password"
+          formControlName="password"
+          [maxlength]="validation.password.limit.max"
+          class="block w-full border-2 border-grey-300 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6"
+        />
+        <button
+          type="button"
+          class="absolute right-3 top-2 text-lg text-gray-600"
+          (click)="handleShowPassword()"
+        >
+          <ng-icon [name]="showPassword() ? 'heroEyeSlash' : 'heroEye'" />
+        </button>
+        <div
+          class="alert alert-danger"
+          *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+        >
+          <div
+            *ngIf="password?.hasError('required')"
+            class="flex items-center gap-1 py-1"
+          >
+            <ng-icon name="heroExclamationCircle" size="22" />
+            {{ validationMessages.required("Password") }}
+          </div>
+          <div
+            *ngIf="password?.hasError('minlength')"
+            class="flex items-center gap-1 py-1"
+          >
+            <ng-icon name="heroExclamationCircle" size="22" />
+            Password be at least 8 characters long
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="flex items-center justify-between">
+        <label for="password" class="block text-sm/6 font-medium text-gray-900"
+          >Confirm Password</label
+        >
+      </div>
+      <div class="relative mt-2">
+        <input
+          [type]="showConfirmPassword() ? 'text' : 'password'"
+          name="confirmPassword"
+          id="confirmPassword"
+          autocomplete="current-password"
+          formControlName="confirmPassword"
+          [maxlength]="validation.password.limit.max"
+          class="block w-full border-2 border-grey-300 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6"
+        />
+        <button
+          type="button"
+          class="absolute right-3 top-2 text-lg text-gray-600"
+          (click)="handleShowConfirmPassword()"
+        >
+          <ng-icon
+            [name]="showConfirmPassword() ? 'heroEyeSlash' : 'heroEye'"
+          />
+        </button>
+        <div
+          class="alert alert-danger"
+          *ngIf="confirmPassword?.dirty || confirmPassword?.touched"
+        >
+          <div
+            *ngIf="
+              this.formRegister.value.password !==
+              this.formRegister.value.confirmPassword
+            "
+            class="flex items-start gap-1 py-1"
+          >
+            <ng-icon name="heroExclamationCircle" size="22" />
+            Confirm password must start with the same pattern as password
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button
+        type="submit"
+        [disabled]="
+          formRegister.invalid ||
+          this.formRegister.value.password !==
+            this.formRegister.value.confirmPassword
+        "
+        class="flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-orange-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 cursor-pointer"
+      >
+        Register
+      </button>
+    </div>
+  </form>
+
+  <p class="mt-10 text-center text-sm/6 text-gray-500">
+    a member?
+    <a
+      routerLink="/auth/login"
+      class="font-semibold text-orange-600 hover:text-orange-500"
+      >Login</a
+    >
+  </p>
+</div>
