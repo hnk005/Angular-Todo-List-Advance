@@ -7,5 +7,7 @@ export interface LoginResponse {
   statusCode: number;
   error: any | null;
   message: string;
-  data: any;
+  data: {
+    accessToken: string;
+  };
 }

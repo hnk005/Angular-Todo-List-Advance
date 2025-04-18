@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { AuthLogoComponent } from './components/auth-logo/auth-logo.component';
 import { AuthRegisterFormComponent } from './components/auth-register-form/auth-register-form.component';
 import { RouterLink } from '@angular/router';
+import { TokenService } from '../../core/services/token-service/token.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { RouterLink } from '@angular/router';
       heroExclamationCircle,
     }),
   ],
-  providers: [AuthService],
+  providers: [AuthService, TokenService],
   exports: [
     AuthLoginFormComponent,
     AuthLogoComponent,
