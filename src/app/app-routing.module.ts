@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
-import { MainLayoutModule } from './core/layouts/main-layout/main-layout.module';
 import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
-import { AuthLayoutModule } from './core/layouts/auth-layout/auth-layout.module';
+import { AuthGuard } from './core/guards/auth-guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -13,6 +12,7 @@ const routes: Routes = [
       import('./modules/todo/todo-routing.module').then(
         (m) => m.TodoRoutingModule
       ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'auth',

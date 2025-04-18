@@ -1,4 +1,10 @@
-import { Component, ElementRef, signal, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  signal,
+  ViewChild,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { catchError, Subject, takeUntil, throwError } from 'rxjs';
 import { Router } from '@angular/router';
@@ -7,13 +13,14 @@ import {
   Validation,
   ValidationMessages,
 } from '../../../../configs/validation.config';
+import { TokenService } from '../../../../core/services/token-service/token.service';
 
 @Component({
   selector: 'app-auth-login-form',
   standalone: false,
   templateUrl: './auth-login-form.component.html',
 })
-export class AuthLoginFormComponent {
+export class AuthLoginFormComponent implements OnDestroy {
   readonly validation;
   readonly validationMessages;
   readonly formLogin;
@@ -22,7 +29,11 @@ export class AuthLoginFormComponent {
 
   @ViewChild('passwordInput') passwordInputRef!: ElementRef;
 
-  constructor(private authSerivce: AuthService) {
+  constructor(
+    private authSerivce: AuthService,
+    private tokenService: TokenService,
+    private router: Router
+  ) {
     this.validation = Validation;
     this.validationMessages = ValidationMessages;
     this.formLogin = new FormGroup({
@@ -63,13 +74,18 @@ export class AuthLoginFormComponent {
         })
       )
       .subscribe((data) => {
-        // const { id } = data.data;
-        // this.tokenService.saveToken(id.toString());
-        // this.router.navigate(['/']);
+        const { accessToken } = data.data;
+        this.tokenService.saveToken(accessToken);
+        this.router.navigate(['/']);
       });
   }
 
   handleShowPassword() {
     this.showPassword.set(!this.showPassword());
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

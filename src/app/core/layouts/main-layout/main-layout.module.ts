@@ -33,6 +33,5 @@ import {
       heroArrowLeftEndOnRectangle,
     }),
   ],
-  exports: [MainLayoutComponent],
 })
 export class MainLayoutModule {}
